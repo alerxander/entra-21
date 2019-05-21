@@ -1,0 +1,8 @@
+package Cargos;
+
+public class Estagiario {
+	public void ir()
+	{
+		
+	}
+}

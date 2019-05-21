@@ -1,0 +1,244 @@
+package formulario;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+
+
+import acao.Acao;
+import beans.Jogos;
+import dados.Dados;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JComboBox;
+
+public class Formulario extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtNome;
+	private JTextField txtGenero;
+	private JTextField txtPlataforma;
+	private JTextField txtClassificação;
+	private JTextField txtValor;
+	private JTable table;
+	private static int codigoJogo;
+
+	
+	public Formulario() {
+		Acao a = new Acao();
+		
+		 
+		
+		setTitle("Cadastro de Jogos");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 586, 408);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNome = new JLabel("Nome");
+		lblNome.setBounds(10, 11, 48, 14);
+		contentPane.add(lblNome);
+		
+		txtNome = new JTextField();
+		txtNome.setBounds(78, 8, 113, 20);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
+		
+		JLabel lblGenero = new JLabel("Genero");
+		lblGenero.setBounds(10, 46, 48, 14);
+		contentPane.add(lblGenero);
+		
+		txtGenero = new JTextField();
+		txtGenero.setBounds(78, 39, 113, 20);
+		contentPane.add(txtGenero);
+		txtGenero.setColumns(10);
+		
+		JLabel lblPlataforma = new JLabel("Plataforma");
+		lblPlataforma.setBounds(10, 76, 59, 14);
+		contentPane.add(lblPlataforma);
+		
+		txtPlataforma = new JTextField();
+		txtPlataforma.setBounds(78, 70, 113, 20);
+		contentPane.add(txtPlataforma);
+		txtPlataforma.setColumns(10);
+		
+		JLabel lblClassificao = new JLabel("Classificação");
+		lblClassificao.setBounds(10, 101, 70, 14);
+		contentPane.add(lblClassificao);
+		
+		txtClassificação = new JTextField();
+		txtClassificação.setBounds(78, 98, 113, 20);
+		contentPane.add(txtClassificação);
+		txtClassificação.setColumns(10);
+		
+		JLabel lblValor = new JLabel("Valor");
+		lblValor.setBounds(10, 126, 48, 14);
+		contentPane.add(lblValor);
+		
+		txtValor = new JTextField();
+		txtValor.setBounds(78, 123, 113, 20);
+		contentPane.add(txtValor);
+		txtValor.setColumns(10);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBounds(10, 189, 133, 23);
+		contentPane.add(btnCadastrar);
+		
+		JButton btnalterar = new JButton("Alterar");
+		btnalterar.setEnabled(false);
+		btnalterar.setBounds(10, 223, 133, 23);
+		contentPane.add(btnalterar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setEnabled(false);
+		btnExcluir.setBounds(10, 257, 133, 23);
+		contentPane.add(btnExcluir);
+		
+		JButton btnEstatistica = new JButton("Estatistica");
+		btnEstatistica.setEnabled(false);
+		btnEstatistica.setBounds(10, 291, 133, 23);
+		contentPane.add(btnEstatistica);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(205, 4, 301, 332);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+				//pegando o numero da linha da tabela
+				
+				int i = table.getSelectedRow();
+				codigoJogo=i;
+				
+				txtNome.setText(table.getValueAt(i, 0).toString());
+				txtGenero.setText(table.getValueAt(i, 1).toString());
+				
+				btnCadastrar.setEnabled(false);
+				btnExcluir.setEnabled(true);
+				btnEstatistica.setEnabled(false);
+				
+			}
+		});
+		
+		
+		table.setModel(a.selecionar());
+		scrollPane.setViewportView(table);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(10, 155, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setBounds(10, 335, 106, 22);
+		contentPane.add(comboBox);
+		
+		
+		JLabel lbQtd = new JLabel();
+		lbQtd.setText("qtd");
+		lbQtd.setBounds(137, 335, 54, 22);
+		contentPane.add(lbQtd);
+		
+		
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				Jogos jogo = new Jogos();
+				jogo.setNome(txtNome.getText());
+				jogo.setGenero(txtGenero.getText());
+				jogo.setPlataforma(txtPlataforma.getText());
+				jogo.setClassificacao(txtClassificação.getText());
+				jogo.setValor(txtValor.getText());
+				
+					
+				limparCapos();
+				if(a.verificar(jogo)==false) {
+				a.Cadastrar(jogo);
+				table.setModel(a.selecionar());
+				
+				
+				btnalterar.setEnabled(true);
+				btnExcluir.setEnabled(true);
+				btnEstatistica.setEnabled(true);
+				
+				}else {
+					JOptionPane.showMessageDialog(null, "Este jogo ja existe nesta mesma plataforma");
+					limparCapos();
+				}
+				
+				comboBox.addItem(txtPlataforma.getText());
+			
+			}
+			
+		});
+		
+		btnalterar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				Jogos j = new Jogos();
+				j.setNome(txtNome.getText());
+				j.setGenero(txtGenero.getText());
+				j.setClassificacao(txtClassificação.getText());
+				j.setPlataforma(txtPlataforma.getText());
+				j.setValor(txtValor.getText());
+				
+				a.alterar(codigoJogo, j);
+				
+				table.setModel(a.selecionar());
+				limparCapos();
+				
+				btnalterar.setEnabled(false);
+				btnExcluir.setEnabled(false);
+				btnEstatistica.setEnabled(false);
+				btnCancelar.setEnabled(true);
+				btnCadastrar.setEnabled(true);
+			
+				
+				
+				
+			}
+		});
+		
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				limparCapos();
+				
+				btnalterar.setEnabled(false);
+				btnExcluir.setEnabled(false);
+				btnEstatistica.setEnabled(false);
+				
+			}
+			
+		});
+		
+	}
+	public void limparCapos() {
+		txtNome.setText("");
+		txtGenero.setText("");
+		txtClassificação.setText("");
+		txtPlataforma.setText("");
+		txtValor.setText("");
+	}
+}

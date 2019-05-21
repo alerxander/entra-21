@@ -1,0 +1,16 @@
+package colaborador;
+
+public class Pessoa {
+
+	protected String nomePessoa,emailPessoa,enderecoPessoa;
+	protected int idadePessoa;
+	
+	//método para exibir os dados da pessoa
+	
+	private void exibirDadosPessoa() {
+		System.out.println("Nome: "+nomePessoa);
+		System.out.println("email: "+emailPessoa);
+		System.out.println("endereço: "+enderecoPessoa);
+		System.out.println("idade: "+idadePessoa);
+	}
+}

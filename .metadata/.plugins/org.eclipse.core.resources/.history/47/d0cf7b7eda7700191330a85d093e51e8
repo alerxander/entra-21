@@ -1,0 +1,70 @@
+package acao;
+
+import javax.swing.table.DefaultTableModel;
+
+import beans.Usuario;
+import dados.Dados;
+
+public class Acao {
+
+	public void Cadastrar(Usuario d) {
+		Dados.listaUsuario.add(d);
+	}
+
+	public DefaultTableModel Selecionar() {
+
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.addColumn("Nome");
+		modelo.addColumn("Idade");
+		modelo.addColumn("Peso");
+		modelo.addColumn("Altura");
+
+		for (int i = 0; i < Dados.listaUsuario.size(); i++) {
+
+			modelo.addRow(new Object[] {
+
+					Dados.listaUsuario.get(i).getNome(), 
+					Dados.listaUsuario.get(i).getIdade(), 
+					Dados.listaUsuario.get(i).getPeso(), 
+					Dados.listaUsuario.get(i).getAltura(), 
+					
+			});
+		}
+
+		return modelo;
+	}
+	
+	public void alterar (int i,Usuario u) {
+		Dados.listaUsuario.set(i, u);
+		
+	}
+	
+	public void excluir(int i ) {
+		Dados.listaUsuario.remove(i);
+		
+	}
+	
+	public boolean existe(Usuario u) {
+		boolean verificando = false;
+		for(int i=0;i<Dados.listaUsuario.size();i++) {
+			if(Dados.listaUsuario.get(i).getNome().equalsIgnoreCase(u.getNome())){
+				verificando = true;
+				break;
+			}
+			
+		}
+		
+		
+		return verificando;
+	}
+	
+	public String CalculoImc(double peso,double altura) {
+		if(Math.pow(altura, peso)) {
+			
+		}
+		
+		
+		return "";
+	}
+	
+}

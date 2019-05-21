@@ -1,0 +1,11 @@
+package Dados;
+
+import java.util.ArrayList;
+
+import beans.Beans;
+
+public static void  Dados {
+
+	ArrayList<Beans>arrayColaboradores =new ArrayList<Beans>();
+	
+}

@@ -1,0 +1,67 @@
+package beans;
+
+public class Dados {
+
+	private String colaborador,cargo;
+	private boolean transporte,saude,fidelidade;
+	private int salarioB,salarioL,IP,Faltas;
+	
+	//gets and sets;
+	
+	public String getColaborador() {
+		return colaborador;
+	}
+	public void setColaborador(String colaborador) {
+		this.colaborador = colaborador;
+	}
+	public String getCargo() {
+		return cargo;
+	}
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+	public boolean isTransporte() {
+		return transporte;
+	}
+	public void setTransporte(boolean transporte) {
+		this.transporte = transporte;
+	}
+	public boolean isSaude() {
+		return saude;
+	}
+	public void setSaude(boolean saude) {
+		this.saude = saude;
+	}
+	public boolean isFidelidade() {
+		return fidelidade;
+	}
+	public void setFidelidade(boolean fidelidade) {
+		this.fidelidade = fidelidade;
+	}
+	public int getSalarioB() {
+		return salarioB;
+	}
+	public void setSalarioB(int salarioB) {
+		this.salarioB = salarioB;
+	}
+	public int getSalarioL() {
+		return salarioL;
+	}
+	public void setSalarioL(int salarioL) {
+		this.salarioL = salarioL;
+	}
+	public int getIP() {
+		return IP;
+	}
+	public void setIP(int iP) {
+		IP = iP;
+	}
+	public int getFaltas() {
+		return Faltas;
+	}
+	public void setFaltas(int faltas) {
+		Faltas = faltas;
+	}
+	
+	
+}

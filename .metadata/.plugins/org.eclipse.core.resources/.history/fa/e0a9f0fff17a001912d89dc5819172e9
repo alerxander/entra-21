@@ -1,0 +1,8 @@
+package Cargos;
+
+public class Analista {
+	public void ir()
+	{
+		
+	}
+}

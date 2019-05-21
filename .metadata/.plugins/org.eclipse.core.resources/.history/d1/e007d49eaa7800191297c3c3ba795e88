@@ -1,0 +1,80 @@
+package acao;
+
+import javax.swing.table.DefaultTableModel;
+
+import Dados.Dados;
+import beans.Beans;
+import beans.Beans2;
+
+public class Acao {
+
+	public void Cadastrar(Beans d) {
+		Dados.arrayColaboradores.add(d);
+
+	}
+
+	public DefaultTableModel selecionar() {
+
+		DefaultTableModel tabela = new DefaultTableModel();
+		tabela.addColumn("Colaborador");
+		tabela.addColumn("Salário Líquido");
+
+		for (int i = 0; i < Dados.arrayColaboradores.size(); i++) {
+			tabela.addRow(new Object[] { Dados.arrayColaboradores.get(i).getColaborador(),
+					Dados.arrayColaboradores.get(i).getSalarioL(), });
+		}
+
+		return tabela;
+
+	}
+	
+	public boolean verificarFalta(Beans b) {
+		boolean verificar = false;
+		if (b.getFaltas() == 0) {
+			verificar = true;
+		}
+
+		return verificar;
+	}
+
+	public void calculoSl(Beans b) {
+		double rsult = 0.0;
+		if (verificarFalta(b)) {
+			b.setSalarioL(b.getSalarioL() + 50.0);
+		} else if (PlanoF(b)) {
+			b.setSalarioL(b.getSalarioL() - 100.0);
+		} else if (PlanoS(b)) {
+			double result = (b.getSalarioL() / 100) * 3;
+			b.setSalarioL(b.getSalarioL() - result);
+		}
+
+	}
+
+	public boolean PlanoF(Beans b) {
+		boolean verificar = false;
+		if (b.isFidelidade()) {
+			verificar = true;
+		}
+		return verificar;
+	}
+
+	public boolean PlanoS(Beans b) {
+		boolean verificar = false;
+		if (b.isSaude()) {
+			verificar = true;
+		}
+		return verificar;
+	}
+	
+	public void estatisticaCal(Beans b,Beans2 b2) {
+		if(b.getCargo()==b2.getNome()) {
+			b2.setQuantidadeC(b2.getQuantidadeC()+1);
+			if(PlanoF(b)) {
+				b2.setCf(b2.getCf()+1);
+			}else if(PlanoS(b)) {
+				b2.setPs(b2.getPs()+1);
+			}
+		}
+	}
+
+}

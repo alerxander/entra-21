@@ -1,0 +1,26 @@
+package acao;
+
+import beans.Produto;
+import dados.Dados;
+
+public class Acao {
+
+	public void somar(Produto p) {
+		p.setQuantidade(p.getQuantidade() + 1);
+		;
+	}
+
+	public void subtrair(Produto p) {
+		p.setQuantidade(p.getQuantidade() - 1);
+	}
+
+	public int somarQuantidade(Produto p1, Produto p2, Produto p3, Produto p4, Produto p5, Produto p6, Produto p7,
+			Produto p8) {
+
+		int resultado = p1.getQuantidade() + p2.getQuantidade() + p3.getQuantidade() + p4.getQuantidade()
+				+ p5.getQuantidade() + p6.getQuantidade() + p7.getQuantidade() + p8.getQuantidade();
+
+		return 1;
+
+	}
+}

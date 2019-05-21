@@ -1,0 +1,22 @@
+package Estado;
+
+import java.util.HashMap;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		//Criar hashMap
+		
+		HashMap<String ,String > estados = new HashMap<String, String>();
+		
+		//adicionar 
+		estados.put("Santa Catarina","Florianopolis");
+		estados.put("Parana", "curitiba");
+		
+		
+		//listar todos os valores
+		System.out.println(estados);
+		
+	}
+	
+}

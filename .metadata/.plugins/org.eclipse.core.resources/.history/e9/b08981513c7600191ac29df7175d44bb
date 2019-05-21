@@ -1,0 +1,80 @@
+package acao;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import beans.Jogos;
+import dados.Dados;
+
+public class Acao {
+
+	public void Cadastrar(Jogos j) {
+
+		Dados.ArrayJogos.add(j);
+
+	}
+
+	public DefaultTableModel selecionar() {
+
+		DefaultTableModel tabela = new DefaultTableModel();
+		tabela.addColumn("Jogo");
+		tabela.addColumn("Gênero");
+
+		for (int i = 0; i < Dados.ArrayJogos.size(); i++) {
+
+			tabela.addRow(new Object[] { Dados.ArrayJogos.get(i).getNome(), Dados.ArrayJogos.get(i).getGenero(), });
+		}
+
+		return tabela;
+	}
+
+	//tabela plataforma
+	public DefaultTableModel plataforma() {
+
+		DefaultTableModel tabelaPlat = new DefaultTableModel();
+		tabelaPlat.addColumn("Plataforma");
+		tabelaPlat.addColumn("Quantidade");
+
+		for (int i = 0; i < Dados.ArrayJogos.size(); i++) {
+
+			tabelaPlat.addRow(new Object[] { Dados.ArrayJogos.get(i).getNome(), Dados.ArrayJogos.get(i).getGenero(), });
+		}
+
+		return tabelaPlat;
+	}
+	
+	
+	
+	public void excluir(int i) {
+
+		Dados.ArrayJogos.remove(i);
+
+	}
+
+	public void alterar(int i, Jogos j) {
+		Dados.ArrayJogos.set(i, j);
+	}
+
+	public boolean verificar(Jogos j) {
+		boolean verificacao = false;
+		
+		for (int i = 0; i < Dados.ArrayJogos.size(); i++) {
+			if (Dados.ArrayJogos.get(i).getPlataforma().equals(j.getPlataforma())) {
+				verificacao = true;
+			}
+		}
+
+		return verificacao;
+
+	}
+	
+	public int estatistica() {
+		
+		
+		
+		
+		
+		return 0;
+	}
+
+}

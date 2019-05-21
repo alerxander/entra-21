@@ -1,0 +1,10 @@
+package Cargos;
+
+public class Desenvolvedor extends cargo {
+
+	
+	public void ir()
+	{
+		
+	}
+}

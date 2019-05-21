@@ -1,0 +1,8 @@
+package Cargos;
+
+public class Estagiario extends cargo{
+	public void ir()
+	{
+		System.out.println("Não há desconto de imposto de renda");
+	}
+}

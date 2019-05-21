@@ -1,0 +1,107 @@
+package acao;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import beans.Jogos;
+import dados.Dados;
+
+public class Acao {
+
+	// cadastrando informação dos jogos
+	public void Cadastrar(Jogos j) {
+
+		Dados.ArrayJogos.add(j);
+
+	}
+	
+	//informação da plataforma
+	public void CadastrarPlataforma(Jogos p) {
+		Dados.Plataforma.add(p);
+		
+	}
+
+	public DefaultTableModel selecionar() {
+
+		DefaultTableModel tabela = new DefaultTableModel();
+		tabela.addColumn("Jogo");
+		tabela.addColumn("Gênero");
+
+		for (int i = 0; i < Dados.ArrayJogos.size(); i++) {
+
+			tabela.addRow(new Object[] { Dados.ArrayJogos.get(i).getNome(), Dados.ArrayJogos.get(i).getGenero(), });
+		}
+
+		return tabela;
+	}
+
+	//tabela plataforma
+	public DefaultTableModel plataforma() {
+
+		DefaultTableModel tabelaPlat = new DefaultTableModel();
+		tabelaPlat.addColumn("Plataforma");
+		tabelaPlat.addColumn("Quantidade");
+
+		for (int i = 0; i < Dados.ArrayJogos.size(); i++) {
+			
+			tabelaPlat.addRow(new Object[] { Dados.ArrayJogos.get(i).getPlataforma(),
+					Dados.ArrayJogos.get(i).getQuantidade(), });
+		}
+
+		return tabelaPlat;
+	}
+	
+	
+	
+	public void excluir(int i) {
+
+		Dados.ArrayJogos.remove(i);
+
+	}
+
+	public void alterar(int i, Jogos j) {
+		Dados.ArrayJogos.set(i, j);
+	}
+
+	public boolean verificar(Jogos j) {
+		boolean verificacao = false;
+
+		for (int i = 0; i < Dados.ArrayJogos.size(); i++) {
+			if (Dados.ArrayJogos.get(i).getPlataforma().equals(j.getPlataforma())&&Dados.ArrayJogos.get(i).getNome().equals(j.getNome())) {
+				verificacao = true;
+			}
+		}
+
+		return verificacao;
+
+	}
+	
+	public void verificarPlat(String plataforma) {
+		int linha =-1;
+		for (int i = 0; i < Dados.ArrayJogos.size(); i++) {
+			if (Dados.Plataforma.get(i).getPlataforma().equals(plataforma)) {
+				linha=i;
+				break;
+			
+			}
+			
+			}
+		 
+	}
+	
+	//setar quantidade na plataforma
+	public void setarQuantidade(Jogos j) {
+		
+		
+	}
+	
+	public int estatistica() {
+		
+		
+		
+		
+		
+		return 0;
+	}
+
+}

@@ -1,0 +1,10 @@
+package beans;
+
+public class Dados {
+
+	private String nome,IMC;
+	private int idade;
+	 private double altura,peso;
+	 
+	
+}

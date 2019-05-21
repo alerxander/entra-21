@@ -1,0 +1,37 @@
+package acao;
+
+import javax.swing.table.DefaultTableModel;
+
+import beans.Usuario;
+import dados.Dados;
+
+public class Acao {
+
+	
+	public void Cadastrar(Usuario d) {
+		Dados.listaUsuario.add(d);	
+	}
+	
+	public DefaultTableModel Selecionar () {
+		
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.addColumn("Nome");
+		modelo.addColumn("Idade");
+		
+		for(int i =0;i<Dados.listaUsuario.size();i++) {
+			
+			modelo.addRow(new Object[] {
+					
+					Dados.listaUsuario.get(i).getNome(),
+					Dados.listaUsuario.get(i).getIdade(),
+					
+					
+			});
+		}
+		
+		
+		return modelo;
+	}
+	
+	
+}

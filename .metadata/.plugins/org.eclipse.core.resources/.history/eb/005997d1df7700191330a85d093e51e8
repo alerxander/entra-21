@@ -1,0 +1,24 @@
+package beans;
+
+public class Quantidade {
+
+	
+	private int quantidade;
+    private String nome;
+    
+	public Private getString() {
+		return String;
+	}
+
+	public void setString(Private string) {
+		String = string;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+}

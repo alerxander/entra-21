@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;beans.Quantidade&apos; to &apos;Produto&apos;&#x0D;&#x0A;- Original project: &apos;Prova 2 segunda chance&apos;&#x0D;&#x0A;- Original element: &apos;beans.Quantidade&apos;&#x0D;&#x0A;- Renamed element: &apos;beans.Produto&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Quantidade&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;beans{Quantidade.java[Quantidade" matchStrategy="1" name="Produto" qualified="false" references="true" similarDeclarations="false" stamp="1558014075757" textual="false" version="1.0"/>
+</session>

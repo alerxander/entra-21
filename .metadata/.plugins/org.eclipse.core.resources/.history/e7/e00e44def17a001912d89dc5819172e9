@@ -1,0 +1,12 @@
+package Cargos;
+
+public class Desenvolvedor extends cargo {
+
+	
+	public void ir()
+	{
+		if(salario<=1500) {
+			System.out.println("Imposto de renda:  "+salario*0.04);
+		}
+	}
+}

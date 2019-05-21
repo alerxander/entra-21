@@ -1,0 +1,18 @@
+package acao;
+
+import beans.Produto;
+import dados.Dados;
+
+public class Acao {
+
+	public void somar(Produto p) {
+		Dados.arrayQuantidade.add(p);
+	}
+	public void subtrair(int i) {
+		Dados.arrayQuantidade.remove(i);
+	}
+	
+	public void Exibir() {
+		
+	}
+}

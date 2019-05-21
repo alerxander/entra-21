@@ -1,0 +1,35 @@
+package acao;
+
+import javax.swing.table.DefaultTableModel;
+
+import Dados.Dados;
+import beans.Beans;
+
+public class Acao {
+
+	public void Cadastrar(Beans d){
+		Dados.arrayColaboradores.add(d);
+		
+	}
+	
+	public DefaultTableModel selecionar() {
+		  
+		 DefaultTableModel tabela = new DefaultTableModel();
+		 tabela.addColumn("Colaborador");
+		 tabela.addColumn("Salário Líquido");
+		 
+		 for(int i =0;i<Dados.arrayColaboradores.size();i++) {
+			 tabela.addRow(new Object[] {
+				 Dados.arrayColaboradores.get(i).getColaborador(),
+				 Dados.arrayColaboradores.get(i).getSalarioL(),
+			 });
+		 }
+		
+		
+		
+		return tabela;
+		
+	}
+			
+	
+}
